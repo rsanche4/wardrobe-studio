@@ -47,9 +47,17 @@ SHOE-001.jpg,SHOE-001,footwear,black,black athletic walking sneakers,Black lace-
 SHOE-002.jpg,SHOE-002,footwear,white / off-white,New Balance white low-top sneakers,White New Balance low-top casual sneakers with perforated toe and grey outlined N logo; laces not visible in photo,
 SHOE-003.jpg,SHOE-003,footwear,charcoal grey,grey trail walking shoes,Grey lace-up rugged trail-style walking shoes with textured uppers and thick soles; brand unconfirmed,
 SHOE-004.jpg,SHOE-004,footwear,black,pointed toe formal oxford dress shoes,"User-described pointed-toe black business executive formal dress shoes; exact closure, finish and brand not confirmed; no photo provided",
-OUTER-009.jpg,OUTER-009,outerwear,black,tailored single breasted blazer,"Black notched-lapel tailored blazer; one button; formal/business layering; thin fabric, not a winter coat",YES
-BOTTOM-014.jpg,BOTTOM-014,bottom,light gray / washed silver,light wash jeans,"H&M light-gray faded denim jeans; casual, relaxed straight-ish leg",YES
-OUTER-010.jpg,OUTER-010,outerwear,charcoal gray with turquoise blue trim,hooded lightweight rain shell,Quechua zip-front lightweight hooded shell/windbreaker; outdoor/rainy casual use; do not assume waterproof rating,YES
-BOTTOM-015.jpg,BOTTOM-015,bottom,deep navy blue,tailored trousers,Dark navy tailored flat-front trousers; smart casual/business suitable,YES
-BOTTOM-016.jpg,BOTTOM-016,bottom,brick red / rust red,corduroy pants,Old Navy rust-red fine-wale corduroy pants; statement color; casual/autumn,YES
-BOTTOM-017.jpg,BOTTOM-017,bottom,medium gray,chino trousers,Old Navy gray chino-style trousers; neutral smart casual,YES
+OUTER-009.jpg,OUTER-009,outerwear,black,tailored single breasted blazer,"Black notched-lapel tailored blazer; one button; formal/business layering; thin fabric, not a winter coat",
+BOTTOM-014.jpg,BOTTOM-014,bottom,light gray / washed silver,light wash jeans,"H&M light-gray faded denim jeans; casual, relaxed straight-ish leg",
+OUTER-010.jpg,OUTER-010,outerwear,charcoal gray with turquoise blue trim,hooded lightweight rain shell,Quechua zip-front lightweight hooded shell/windbreaker; outdoor/rainy casual use; do not assume waterproof rating,
+BOTTOM-015.jpg,BOTTOM-015,bottom,deep navy blue,tailored trousers,Dark navy tailored flat-front trousers; smart casual/business suitable,
+BOTTOM-016.jpg,BOTTOM-016,bottom,brick red / rust red,corduroy pants,Old Navy rust-red fine-wale corduroy pants; statement color; casual/autumn,
+BOTTOM-017.jpg,BOTTOM-017,bottom,medium gray,chino trousers,Old Navy gray chino-style trousers; neutral smart casual,
+ACC-006.jpg,ACC-006,accessory,black,bucket hat,"Soft black bucket hat, downward brim",YES
+ACC-007.jpg,ACC-007,accessory,black,knit beanie,Black rib-knit cuffed beanie,YES
+ACC-008.jpg,ACC-008,accessory,burgundy / wine,knit beanie,Burgundy rib-knit cuffed beanie,YES
+ACC-009.jpg,ACC-009,accessory,dark burgundy,winter gloves,Dark burgundy knit gloves; one pair,YES
+ACC-010.jpg,ACC-010,accessory,navy blue / gray faux fur,trapper hat,Navy trapper hat with gray faux-fur ear flaps,YES
+ACC-011.jpg,ACC-011,accessory,pink,novelty plush hat,Pink plush animal hat with long dangling paws; playful statement accessory,YES
+ACC-012.jpg,ACC-012,accessory,brown tortoiseshell,sunglasses,"Brown-tinted angular sunglasses, dark brown frame",YES
+ACC-013.jpg,ACC-013,accessory,black,sunglasses,"Black rectangular sunglasses, dark lenses",YES

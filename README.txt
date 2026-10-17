@@ -1,11 +1,16 @@
-RAFA WARDROBE STUDIO V10 — 54 ITEMS / 70 CURATED OUTFITS
+RAFA'S WARDROBE STUDIO V11 — ACCESSORY EXPANSION
+62 wardrobe entries / 90 curated outfits / 8 new accessories.
 
-1. Extract ZIP. Keep the HTML and images folder together.
-2. IMPORTANT: Copy all your existing 48 garment images from your OLD images folder into this NEW images folder. The ZIP includes only the 6 new item photos, not your old personal photo collection.
+HOW TO USE:
+1. Extract this ZIP into a folder.
+2. IMPORTANT: Copy your previously collected product photos into this folder's images/ subfolder. Keep the 8 new ACC-006.jpg through ACC-013.jpg images (or replace with your own).
 3. Open Rafa_Wardrobe_Studio.html in Chrome or Edge.
-4. Click Load Photos Folder and choose the NEW images folder.
-5. New files: OUTER-009.jpg, OUTER-010.jpg, BOTTOM-014.jpg, BOTTOM-015.jpg, BOTTOM-016.jpg, BOTTOM-017.jpg. Replace with nicer product photos any time.
-6. All previous IDs stay unchanged. The 32 new outfits are LOOK-039 through LOOK-070.
-7. A new browser storage key ensures the expanded 70-outfit catalog appears; to preserve custom outfits from V9, export their catalog JSON in V9 and import it in V10 (this replaces the catalog, so export V10 first if needed).
+4. Click 'Load Photos Folder' and choose the images folder.
+5. Photos appear in outfit previews, builder, and inventory.
+6. PHOTO_FILENAMES.csv maps every item to its photo filename.
 
-NOTE: Some older items had multiple garments grouped under a single ID (e.g., black tees). Outfit combinations are style suggestions, not guarantees of fit, warmth or occasion dress codes.
+The 8 new accessory images are cropped from the single photo you uploaded, for convenience.
+The 70 prior outfits remain; 20 new curated outfits were added. One accessory can be selected per outfit; if an outfit uses gloves, feel free to add a hat in real life.
+The pink novelty hat is included only in deliberately playful looks, not normal formal recommendations.
+The app uses a fresh v11 browser-storage key to load all 90 starter outfits.
+Export any customized outfits from older versions before switching.

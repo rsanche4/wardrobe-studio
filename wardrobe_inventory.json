@@ -1,5 +1,5 @@
 {
-  "inventory_version": 7,
+  "inventory_version": 8,
   "status": "inventory_in_progress",
   "shopping_budget": 0,
   "items": [
@@ -682,6 +682,94 @@
       "details": "Old Navy gray chino-style trousers; neutral smart casual",
       "fit": "not_assessed",
       "local_image_filename": "images/BOTTOM-017.jpg"
+    },
+    {
+      "id": "ACC-006",
+      "category": "accessory",
+      "type": "bucket_hat",
+      "color": "black",
+      "brand": "unknown",
+      "quantity": 1,
+      "details": "Soft black bucket hat, downward brim",
+      "fit": "not_assessed",
+      "local_image_filename": "images/ACC-006.jpg"
+    },
+    {
+      "id": "ACC-007",
+      "category": "accessory",
+      "type": "knit_beanie",
+      "color": "black",
+      "brand": "unknown",
+      "quantity": 1,
+      "details": "Black rib-knit cuffed beanie",
+      "fit": "not_assessed",
+      "local_image_filename": "images/ACC-007.jpg"
+    },
+    {
+      "id": "ACC-008",
+      "category": "accessory",
+      "type": "knit_beanie",
+      "color": "burgundy / wine",
+      "brand": "unknown",
+      "quantity": 1,
+      "details": "Burgundy rib-knit cuffed beanie",
+      "fit": "not_assessed",
+      "local_image_filename": "images/ACC-008.jpg"
+    },
+    {
+      "id": "ACC-009",
+      "category": "accessory",
+      "type": "winter_gloves",
+      "color": "dark burgundy",
+      "brand": "unknown",
+      "quantity": 1,
+      "details": "Dark burgundy knit gloves; one pair",
+      "fit": "not_assessed",
+      "local_image_filename": "images/ACC-009.jpg"
+    },
+    {
+      "id": "ACC-010",
+      "category": "accessory",
+      "type": "trapper_hat",
+      "color": "navy blue / gray faux fur",
+      "brand": "unknown",
+      "quantity": 1,
+      "details": "Navy trapper hat with gray faux-fur ear flaps",
+      "fit": "not_assessed",
+      "local_image_filename": "images/ACC-010.jpg"
+    },
+    {
+      "id": "ACC-011",
+      "category": "accessory",
+      "type": "novelty_plush_hat",
+      "color": "pink",
+      "brand": "unknown",
+      "quantity": 1,
+      "details": "Pink plush animal hat with long dangling paws; playful statement accessory",
+      "fit": "not_assessed",
+      "local_image_filename": "images/ACC-011.jpg"
+    },
+    {
+      "id": "ACC-012",
+      "category": "accessory",
+      "type": "sunglasses",
+      "color": "brown tortoiseshell",
+      "brand": "unknown",
+      "quantity": 1,
+      "details": "Brown-tinted angular sunglasses, dark brown frame",
+      "fit": "not_assessed",
+      "local_image_filename": "images/ACC-012.jpg"
+    },
+    {
+      "id": "ACC-013",
+      "category": "accessory",
+      "type": "sunglasses",
+      "color": "black",
+      "brand": "unknown",
+      "quantity": 1,
+      "details": "Black rectangular sunglasses, dark lenses",
+      "fit": "not_assessed",
+      "local_image_filename": "images/ACC-013.jpg"
     }
   ]
 }
