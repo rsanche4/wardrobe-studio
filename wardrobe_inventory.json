@@ -770,6 +770,17 @@
       "details": "Black rectangular sunglasses, dark lenses",
       "fit": "not_assessed",
       "local_image_filename": "images/ACC-013.jpg"
+    },
+    {
+      "id": "OUTER-011",
+      "category": "outerwear",
+      "type": "costume",
+      "color": "black",
+      "brand": "unknown",
+      "quantity": 1,
+      "details": "Halloween costume of the Grim Reaper",
+      "fit": "not_assessed",
+      "local_image_filename": "images/OUTER-011.jpg"
     }
   ]
 }

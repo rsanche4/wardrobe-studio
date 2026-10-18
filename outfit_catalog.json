@@ -1261,7 +1261,21 @@
       "accessory": "ACC-012",
       "footwear": "SHOE-002",
       "note": "Cream top and navy chinos with warm sunglasses; easy everyday balance."
+    },
+    {
+      "id": "LOOK-091",
+      "name": "The Grim Reaper",
+      "season": "Fall",
+      "occasion": "Creative",
+      "minF": 48,
+      "maxF": 76,
+      "top": null,
+      "bottom": null,
+      "outer": "OUTER-011",
+      "accessory": null,
+      "footwear": "SHOE-001",
+      "note": "An outfit for Halloween or for costume party."
     }
   ],
-  "notes": "70 curated outfits across 54 wardrobe entries. New clothing additions LOOK-039 to LOOK-070. Weather ranges are approximations; adjust for comfort and conditions."
+  "notes": "71 curated outfits across 55 wardrobe entries. Adjust for comfort and conditions."
 }

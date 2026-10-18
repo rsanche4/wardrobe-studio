@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Rafa's Wardrobe Studio · Local Photo Edition — Folder Picker Fix</title>
+  <style>
+    :root {
+      font-family: Inter, system-ui, Segoe UI, sans-serif;
+      color: #eee;
+      background: #101116
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0
+    }
+
+    header {
+      padding: 27px max(22px, calc((100vw - 1300px)/2));
+      background: linear-gradient(110deg, #232438, #121318);
+      border-bottom: 1px solid #343643
+    }
+
+    h1 {
+      font-size: 30px;
+      margin: 4px 0 8px
+    }
+
+    h2 {
+      font-size: 20px;
+      margin: 0 0 14px
+    }
+
+    p {
+      color: #afb2c1;
+      line-height: 1.5
+    }
+
+    small,
+    .muted {
+      color: #aeb1c1
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 5px 9px;
+      border-radius: 20px;
+      background: #323449;
+      color: #e1e2fa;
+      font-size: 12px;
+      margin: 3px 3px 3px 0
+    }
+
+    .shell {
+      max-width: 1320px;
+      margin: auto;
+      padding: 24px 20px
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px
+    }
+
+    input,
+    select,
+    button,
+    textarea {
+      background: #242633;
+      color: #fff;
+      border: 1px solid #444657;
+      border-radius: 9px;
+      padding: 11px 12px;
+      font: inherit
+    }
+
+    button {
+      cursor: pointer
+    }
+
+    button:hover {
+      background: #35394b
+    }
+
+    .primary {
+      background: #7276e7;
+      border-color: #7276e7
+    }
+
+    .primary:hover {
+      background: #8589f2
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+      flex-wrap: wrap
+    }
+
+    .active {
+      background: #575caa
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
+      gap: 15px
+    }
+
+    .card,
+    .panel {
+      background: #1b1d27;
+      border: 1px solid #373946;
+      border-radius: 15px;
+      padding: 16px
+    }
+
+    .card h3 {
+      margin: 8px 0 3px;
+      font-size: 17px
+    }
+
+    .card button {
+      width: 100%;
+      margin-top: 12px
+    }
+
+    .pieces {
+      display: flex;
+      gap: 7px;
+      margin: 14px 0;
+      align-items: stretch
+    }
+
+    .piece {
+      flex: 1;
+      min-width: 0;
+      text-align: center
+    }
+
+    .piece img,
+    .placeholder {
+      width: 100%;
+      height: 135px;
+      object-fit: cover;
+      border-radius: 9px;
+      background: #363846
+    }
+
+    .placeholder {
+      display: grid;
+      place-items: center;
+      font-size: 28px;
+      color: #aaa
+    }
+
+    .piece small {
+      display: block;
+      font-size: 10px;
+      line-height: 1.3;
+      margin-top: 5px;
+      overflow-wrap: anywhere
+    }
+
+    .two {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px
+    }
+
+    .builderrow {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin: 12px 0
+    }
+
+    .builderrow label {
+      font-size: 12px;
+      color: #b7bbca
+    }
+
+    .builderrow select {
+      display: block;
+      width: 100%;
+      margin-top: 5px
+    }
+
+    .preview {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px
+    }
+
+    .preview .piece img,
+    .preview .placeholder {
+      height: 200px;
+      object-fit: contain;
+      background: #30323c
+    }
+
+    .itemgrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+      gap: 12px
+    }
+
+    .item {
+      background: #222430;
+      border: 1px solid #393b48;
+      padding: 10px;
+      border-radius: 12px
+    }
+
+    .item img,
+    .item .placeholder {
+      width: 100%;
+      height: 160px;
+      object-fit: contain;
+      background: #343641;
+      border-radius: 7px
+    }
+
+    .item b {
+      display: block;
+      font-size: 13px;
+      margin-top: 7px
+    }
+
+    .item small {
+      font-size: 11px
+    }
+
+    .detail {
+      margin: 10px 0 0
+    }
+
+    .hidden {
+      display: none !important
+    }
+
+    .note {
+      background: #242636;
+      padding: 13px;
+      border-radius: 10px;
+      margin-bottom: 18px
+    }
+
+    .stat {
+      font-weight: 600;
+      color: #e1e2fb
+    }
+
+    .actions {
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+      margin-top: 14px
+    }
+
+    #toast {
+      position: fixed;
+      bottom: 18px;
+      right: 18px;
+      background: #42488d;
+      padding: 12px 16px;
+      border-radius: 10px;
+      display: none;
+      max-width: 320px
+    }
+
+    @media(max-width:750px) {
+      .two {
+        grid-template-columns: 1fr
+      }
+
+      .builderrow {
+        grid-template-columns: 1fr
+      }
+
+      .piece img,
+      .placeholder {
+        height: 115px
+      }
+
+      h1 {
+        font-size: 24px
+      }
+    }
+
+    a {
+      color: #b5c4ff
+    }
+
+    .piece img,
+    .item img {
+      object-fit: contain !important;
+      background: #f0f0f2 !important;
+      padding: 5px
+    }
+
+    .piece img {
+      height: 135px
+    }
+  </style>
+</head>
+
+<body>
+  <div id="photoLoadPanel"
+    style="position:sticky;top:0;z-index:99;background:#24273b;border-bottom:1px solid #666a8c;padding:12px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+    <label
+      style="cursor:pointer;display:inline-block;background:#777be9;color:white;border-radius:9px;padding:10px 15px;font-weight:700">📁
+      Load Photos Folder
+      <input id="photoFolderPicker" type="file" webkitdirectory directory multiple accept="image/*"
+        style="display:none">
+    </label>
+    <label
+      style="cursor:pointer;display:inline-block;background:#454866;color:white;border-radius:9px;padding:10px 15px">🖼️
+      Or select image files
+      <input id="photoFilePicker" type="file" multiple accept="image/*" style="display:none">
+    </label>
+    <span id="photoStatus" style="color:#f2f2f8;font-size:13px">Select your <b>images</b> folder to display your photos.
+      Supports .jpg, .jpeg, .png, .webp, .avif.</span>
+  </div>
+  <header><small>✦ YOUR PERSONAL STYLE LIBRARY</small>
+    <h1>RAFA'S WARDROBE STUDIO · JSON-FIRST EDITION</h1>
+    <div class="muted">Create-a-Style · Your clothes, your combinations · Your own chosen images · works offline · add
+      photos whenever you like</div>
+  </header>
+  <main class="shell">
+    <div class="panel" style="margin-bottom:18px;border-color:#6266a0">
+  <b>📦 Live JSON data</b><p style="margin:6px 0 12px">Inventory and outfits load automatically from the two JSON files beside this HTML when served locally. Edit JSON, then refresh the page. No embedded wardrobe data.</p>
+  <label style="display:inline-block;cursor:pointer;background:#7276e7;padding:10px 14px;border-radius:9px">🔄 Reload JSON files
+    <input id="reloadJsonPicker" type="file" accept=".json,application/json" multiple style="display:none">
+  </label> <span id="dataStatus" style="margin-left:10px;color:#d5d6ec">Loading JSON…</span>
+  <p style="font-size:12px;margin-bottom:0">Normally just refresh after editing the JSON files. Manual reload is an optional fallback. Photos load automatically from <code>images/</code>; the photo picker remains available.</p>
+</div>
+<div class="tabs"><button class="active" data-tab="looks">Outfit catalog</button><button data-tab="builder">Mix &
+        match</button><button data-tab="inventory">My wardrobe</button><button data-tab="help">How to save</button>
+    </div>
+    <section id="looks">
+      <div class="note"><b id="lookcount"></b> curated outfits · <span id="wardrobeCount">63</span> wardrobe entries · Your chosen photos appear from
+        the images folder. Missing pictures display a placeholder. All looks are suggestions: fit and warmth still need
+        checking.</div>
+      <div class="toolbar"><input id="search" placeholder="Search looks, places, notes…"
+          style="flex:2;min-width:180px"><select id="season">
+          <option value="">Any season</option>
+          <option>Spring</option>
+          <option>Summer</option>
+          <option>Fall</option>
+          <option>Winter</option>
+          <option>All year</option>
+        </select><select id="occasion">
+          <option value="">Any occasion</option>
+        </select><select id="temp">
+          <option value="">Any temperature</option>
+          <option value="30">30°F</option>
+          <option value="40">40°F</option>
+          <option value="50">50°F</option>
+          <option value="60">60°F</option>
+          <option value="70">70°F</option>
+          <option value="80">80°F</option>
+          <option value="90">90°F</option>
+        </select></div>
+      <div id="looksgrid" class="grid"></div>
+    </section>
+    <section id="builder" class="hidden">
+      <div class="two">
+        <div class="panel">
+          <h2>Build your own look</h2>
+          <p>Choose real pieces from your inventory. Save the combination to your catalog.</p>
+          <div class="builderrow" id="selectors"></div><label>Outfit name <input id="newname"
+              placeholder="e.g. Sunday gallery walk" style="width:100%;margin:5px 0 12px"></label>
+          <div class="builderrow"><label>Season<select id="newseason">
+                <option>All year</option>
+                <option>Spring</option>
+                <option>Summer</option>
+                <option>Fall</option>
+                <option>Winter</option>
+              </select></label><label>Occasion<input id="newoccasion" placeholder="e.g. Museum"
+                value="Casual"></label><label>Minimum °F<input id="newmin" type="number"
+                value="50"></label><label>Maximum °F<input id="newmax" type="number" value="75"></label></div>
+          <label>Styling notes<textarea id="newnote" rows="3" style="width:100%;margin-top:6px"
+              placeholder="What makes this outfit work?"></textarea></label>
+          <div class="actions"><button class="primary" id="saveLook">Save outfit</button><button id="resetBuilder">Clear
+              selections</button></div>
+        </div>
+        <div class="panel">
+          <h2>Outfit preview</h2>
+          <div id="builderpreview" class="preview"></div>
+          <p class="muted">Your chosen local photos appear when present; otherwise a placeholder. This is not a virtual
+            try-on.</p>
+        </div>
+      </div>
+    </section>
+    <section id="inventory" class="hidden">
+      <div class="toolbar"><input id="itemsearch" placeholder="Search wardrobe entries" style="flex:1"><select
+          id="itemcategory">
+          <option value="">All categories</option>
+          <option value="top">Tops</option>
+          <option value="bottom">Bottoms</option>
+          <option value="outerwear">Outerwear</option>
+          <option value="accessory">Accessories</option>
+          <option value="footwear">Shoes</option>
+        </select></div>
+      <div id="itemsgrid" class="itemgrid"></div>
+    </section>
+    <section id="help" class="hidden">
+      <div class="panel">
+        <h2>How this works</h2>
+        <p><b>1.</b> Serve this folder with a local HTTP server (for example <code>python -m http.server 8000</code>), then open <code>http://localhost:8000/</code>. No internet connection required. Put
+          images in the <b>images</b> folder beside this HTML file, named by item ID (for example TOP-001.jpg). JPG,
+          JPEG, PNG, WEBP and AVIF are supported.</p>
+        <p><b>2.</b> Browse outfit ideas, filter by weather and occasion, or open an outfit in Mix & match to modify it.
+        </p>
+        <p><b>3.</b> New outfits are stored in your browser's local storage, which may disappear if browser data is
+          cleared or you switch browsers. <b>Export your catalog JSON</b> after making changes.</p>
+        <p><b>4.</b> Use Import catalog to restore saved outfits or load an updated catalog from a future chat. To
+          replace a photo, save your preferred product image to the images folder under the item ID. Reload the HTML
+          page. For new clothing items, update the inventory JSON and refresh the page.</p>
+        <p><b>5.</b> The wardrobe includes four pairs of shoes, including formal black dress shoes. Temperature ranges
+          are approximate. This is not a virtual fitting tool and reference images are not a virtual try-on.</p>
+        <div class="actions"><button class="primary" id="export">Export outfit catalog JSON</button><button
+            id="exportInventory">Export wardrobe inventory JSON</button><button id="import">Import catalog
+            JSON</button><input id="importfile" type="file" accept=".json,application/json" class="hidden"><button
+            id="reset">Restore starter outfits</button></div>
+        <p id="storage" class="muted"></p>
+      </div>
+    </section>
+  </main>
+  <div id="toast"></div>
+  <script>
+    let INVENTORY = [];
+    let STARTER = { outfits: [] }; let INVENTORY_DOCUMENT = { inventory_version: 8 };
+    const KEY = "rafa-wardrobe-json-first"; let byId = {}; let looks = [];
+    const $ = id => document.getElementById(id); const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c])); function toast(s) {$('toast').textContent = s; $('toast').style.display = 'block'; setTimeout(() => $('toast').style.display = 'none', 2600)}
+    function persist() {try {localStorage.setItem(KEY, JSON.stringify(looks)); $('storage').textContent = 'Unsaved browser edits: export the catalog JSON to keep them across page refreshes.'} catch (e) {toast('Local storage unavailable. Export JSON to save changes.')} }
+    function part(id) {if (!id) return ''; let i = byId[id]; if (!i) return ''; return `<div class="piece">${photoHtml(i)}<small>${esc(i.id)}<br>${esc(i.color)}</small></div>`}
+    function preview(o) {return ['top', 'bottom', 'outer', 'accessory', 'footwear'].filter(k => o[k]).map(k => part(o[k])).join('')}
+    function renderLooks() {let q = $('search').value.toLowerCase(), s = $('season').value, a = $('occasion').value, t = $('temp').value; let found = looks.filter(o => (!s || o.season === s) && (!a || o.occasion === a) && (!t || (Number(t) >= Number(o.minF) && Number(t) <= Number(o.maxF))) && JSON.stringify(o).toLowerCase().includes(q)); $('lookcount').textContent = looks.length; $('looksgrid').innerHTML = found.map(o => `<article class="card"><div class="muted">${esc(o.id)} · ${esc(o.minF)}–${esc(o.maxF)}°F</div><h3>${esc(o.name)}</h3><span class="tag">${esc(o.season)}</span><span class="tag">${esc(o.occasion)}</span><div class="pieces">${preview(o)}</div><p class="detail">${esc(o.note || '')}</p><button data-edit="${esc(o.id)}">Customize this look ↗</button></article>`).join('') || '<p>No looks match those filters. Try broadening them.</p>'; $('looksgrid').querySelectorAll('[data-edit]').forEach(b => b.onclick = () => edit(b.dataset.edit)); hydratePhotos()}
+    function fillOccasions() {let old = $('occasion').value; $('occasion').innerHTML = '<option value="">Any occasion</option>' + [...new Set(looks.map(o => o.occasion))].sort().map(x => `<option>${esc(x)}</option>`).join(''); $('occasion').value = old}
+    const slots = [['top', 'Top', 'top'], ['bottom', 'Bottom', 'bottom'], ['outer', 'Outerwear', 'outerwear'], ['accessory', 'Accessory', 'accessory'], ['footwear', 'Shoes', 'footwear']]; function buildSelectors() {$('selectors').innerHTML = slots.map(([k, label, cat]) => `<label>${label}<select id="pick_${k}"><option value="">None</option>${INVENTORY.filter(i => i.category === cat).map(i => `<option value="${esc(i.id)}">${esc(i.id)} · ${esc(i.color)} · ${esc(i.type.replaceAll('_', ' '))}</option>`).join('')}</select></label>`).join(''); slots.forEach(([k]) => $('pick_' + k).onchange = renderBuilder)} function renderBuilder() {$('builderpreview').innerHTML = slots.map(([k]) => part($('pick_' + k).value) || `<div class="piece"><div class="placeholder">+</div><small>${k}</small></div>`).join(''); hydratePhotos()}
+    let editing = null; function edit(id) {let o = looks.find(x => x.id === id); if (!o) return; editing = id; slots.forEach(([k]) => $('pick_' + k).value = o[k] || ''); $('newname').value = o.name; $('newseason').value = o.season; $('newoccasion').value = o.occasion; $('newmin').value = o.minF; $('newmax').value = o.maxF; $('newnote').value = o.note || ''; renderBuilder(); tab('builder'); $('saveLook').textContent = 'Save changes'; window.scrollTo(0, 0)}
+    function resetBuilder() {editing = null; slots.forEach(([k]) => $('pick_' + k).value = ''); $('newname').value = ''; $('newnote').value = ''; $('newoccasion').value = 'Casual'; $('newseason').value = 'All year'; $('newmin').value = 50; $('newmax').value = 75; $('saveLook').textContent = 'Save outfit'; renderBuilder()}
+    $('saveLook').onclick = () => {let name = $('newname').value.trim(); if (!name) return toast('Give the outfit a name.'); let o = {id: editing || 'CUSTOM-' + Date.now(), name, season: $('newseason').value, occasion: $('newoccasion').value.trim() || 'Casual', minF: Number($('newmin').value), maxF: Number($('newmax').value), note: $('newnote').value.trim()}; slots.forEach(([k]) => o[k] = $('pick_' + k).value || null); if (!o.top || !o.bottom) return toast('Select at least a top and bottom.'); if (o.minF > o.maxF) return toast('Minimum temperature must not exceed maximum.'); if (editing) {looks = looks.map(x => x.id === editing ? o : x)} else looks.push(o); persist(); fillOccasions(); renderLooks(); toast('Outfit saved! Export JSON to back it up.'); tab('looks')}; $('resetBuilder').onclick = resetBuilder;
+    function renderItems() {let q = $('itemsearch').value.toLowerCase(), cat = $('itemcategory').value; $('itemsgrid').innerHTML = INVENTORY.filter(i => (!cat || i.category === cat) && JSON.stringify(i).toLowerCase().includes(q)).map(i => `<div class="item">${photoHtml(i)}<b>${esc(i.id)}</b><small>${esc(i.color)} · ${esc(i.type.replaceAll('_', ' '))}</small><p style="font-size:11px">${esc(i.details || '')}</p><small style="display:block;margin-top:7px">Photo ID: ${esc(i.id)} (.jpg, .jpeg, .png, .webp, .avif)</small></div>`).join(''); hydratePhotos()}
+    function tab(name) {document.querySelectorAll('main section').forEach(s => s.classList.toggle('hidden', s.id !== name)); document.querySelectorAll('[data-tab]').forEach(b => b.classList.toggle('active', b.dataset.tab === name))} document.querySelectorAll('[data-tab]').forEach(b => b.onclick = () => tab(b.dataset.tab));['search', 'season', 'occasion', 'temp'].forEach(id => $(id).addEventListener('input', renderLooks));['itemsearch', 'itemcategory'].forEach(id => $(id).addEventListener('input', renderItems));
+    $('export').onclick = () => {let blob = new Blob([JSON.stringify({...STARTER, outfits: looks}, null, 2)], {type: 'application/json'}); let url = URL.createObjectURL(blob); let a = document.createElement('a'); a.href = url; a.download = 'rafa_outfit_catalog_saved.json'; a.click(); setTimeout(() => URL.revokeObjectURL(url), 500)}; $('import').onclick = () => $('importfile').click(); $('importfile').onchange = async e => {try {let d = JSON.parse(await e.target.files[0].text()); if (!Array.isArray(d.outfits)) throw Error('Missing outfits array'); looks = d.outfits; persist(); fillOccasions(); renderLooks(); toast('Catalog imported.')} catch (e) {toast('Invalid catalog JSON: ' + e.message)} e.target.value = ''}; $('reset').onclick = () => {if (confirm('Restore outfits from the JSON loaded at startup? This replaces unsaved edits.')) {looks = STARTER.outfits.slice(); fillOccasions(); renderLooks(); toast('JSON outfits restored.')} };
+
+    async function reloadJsonFiles(fileList) {
+      const selected = Array.from(fileList || []);
+      if (!selected.length) return;
+      let nextInventory = null, nextCatalog = null;
+      try {
+        for (const file of selected) {
+          const data = JSON.parse(await file.text());
+          if (Array.isArray(data.items)) nextInventory = data;
+          else if (Array.isArray(data.outfits)) nextCatalog = data;
+          else throw Error(file.name + ' is not a wardrobe inventory or outfit catalog');
+        }
+        if (!nextInventory && !nextCatalog) throw Error('No supported JSON files selected');
+        if (nextInventory) {
+          if (!nextInventory.items.every(i => i && typeof i.id === 'string' && typeof i.category === 'string' && typeof i.type === 'string')) throw Error('Invalid inventory item structure');
+        }
+        if (nextCatalog) {
+          if (!nextCatalog.outfits.every(o => o && typeof o.id === 'string' && typeof o.name === 'string')) throw Error('Invalid outfit structure');
+        }
+        const newItems = nextInventory ? nextInventory.items : INVENTORY;
+        const newLooks = nextCatalog ? nextCatalog.outfits : looks;
+        const nextById = Object.fromEntries(newItems.map(i => [i.id, i]));
+        const missing = [...new Set(newLooks.flatMap(o => ['top','bottom','outer','accessory','footwear'].map(k => o[k]).filter(id => id && !nextById[id])))];
+        if (missing.length) throw Error('Unknown garment IDs referenced in outfits: ' + missing.slice(0,8).join(', '));
+        INVENTORY = newItems;
+        if (nextInventory) INVENTORY_DOCUMENT = nextInventory;
+        byId = nextById;
+        looks = newLooks.slice();
+        if (nextCatalog) STARTER = nextCatalog;
+        buildSelectors(); resetBuilder(); fillOccasions(); renderLooks(); renderItems();
+        document.getElementById('wardrobeCount').textContent = INVENTORY.length;
+        document.getElementById('dataStatus').textContent = `Loaded ${INVENTORY.length} items · ${looks.length} outfits (from JSON)`;
+        toast('JSON loaded successfully!');
+      } catch (err) {
+        document.getElementById('dataStatus').textContent = 'Reload failed: ' + err.message;
+        toast('Reload failed: ' + err.message);
+      }
+    }
+    document.getElementById('reloadJsonPicker').addEventListener('change', async e => {
+      await reloadJsonFiles(e.target.files); e.target.value = '';
+    });
+
+
+    async function initializeFromJson() {
+      const status = document.getElementById('dataStatus');
+      if (location.protocol === 'file:') {
+        status.textContent = 'Automatic JSON loading requires localhost. Run python -m http.server 8000 in this folder.';
+        return;
+      }
+      try {
+        const [inventoryResponse, catalogResponse] = await Promise.all([
+          fetch('./wardrobe_inventory.json', {cache:'no-store'}),
+          fetch('./outfit_catalog.json', {cache:'no-store'})
+        ]);
+        if (!inventoryResponse.ok || !catalogResponse.ok) throw Error('Could not read root-level JSON files (HTTP ' + inventoryResponse.status + ', ' + catalogResponse.status + ')');
+        const inventoryData = await inventoryResponse.json();
+        const catalogData = await catalogResponse.json();
+        if (!Array.isArray(inventoryData.items) || !Array.isArray(catalogData.outfits)) throw Error('Expected items[] and outfits[] in JSON files');
+        const ids = new Set(inventoryData.items.map(item => item.id));
+        const missing = [...new Set(catalogData.outfits.flatMap(o => ['top','bottom','outer','accessory','footwear'].map(k => o[k]).filter(id => id && !ids.has(id))))];
+        if (missing.length) throw Error('Unknown garment IDs: ' + missing.join(', '));
+        INVENTORY = inventoryData.items;
+        INVENTORY_DOCUMENT = inventoryData;
+        STARTER = catalogData;
+        looks = catalogData.outfits.slice();
+        byId = Object.fromEntries(INVENTORY.map(item => [item.id, item]));
+        buildSelectors(); resetBuilder(); fillOccasions(); renderLooks(); renderItems();
+        document.getElementById('wardrobeCount').textContent = INVENTORY.length;
+        status.textContent = `Loaded ${INVENTORY.length} items · ${looks.length} outfits from root JSON`;
+      } catch (error) {
+        status.textContent = 'JSON load failed: ' + error.message;
+        console.error('Wardrobe Studio JSON load failed:', error);
+      }
+    }
+
+    const imageExtensions = ['jpg', 'jpeg', 'png', 'webp', 'avif'];
+    const selectedPhotoUrls = new Map();
+    function loadSelectedPhotos(files) {
+      let count = 0;
+      for (const file of files) {
+        const filename = file.name.trim();
+        const match = filename.match(/^([a-z]+-\d{3})\.(jpe?g|png|webp|avif)$/i);
+        if (!match) continue;
+        const id = match[1].toUpperCase();
+        if (!byId[id]) continue;
+        if (selectedPhotoUrls.has(id)) URL.revokeObjectURL(selectedPhotoUrls.get(id));
+        selectedPhotoUrls.set(id, URL.createObjectURL(file)); count++;
+      }
+      renderLooks(); renderBuilder(); renderItems();
+      document.getElementById('photoStatus').textContent = count
+        ? `Loaded ${selectedPhotoUrls.size} garment photos. Displaying them in outfits, builder, and inventory.`
+        : 'No matching files found. Names should look like TOP-001.jpeg or SHOE-004.png.';
+    }
+
+    function photoHtml(i) {return `<img class="local-photo" data-photo-id="${esc(i.id)}" alt="${esc(i.color)} ${esc(i.type.replaceAll('_', ' '))}" loading="eager" style="display:block"><div class="placeholder">📷<small style="display:block;font-size:11px">Add ${esc(i.id)}.jpg to images/</small></div>`}
+    function hydratePhotos() {
+      document.querySelectorAll('img[data-photo-id]').forEach(img => {
+        if (img.dataset.ready === 'yes') return; img.dataset.ready = 'yes'; let id = img.dataset.photoId;
+        let files = selectedPhotoUrls.has(id) ? [selectedPhotoUrls.get(id)] : imageExtensions.map(ext => 'images/' + id + '.' + ext); let n = 0;
+        const next = () => {if (n >= files.length) {img.style.display = 'none'; img.nextElementSibling.style.display = 'grid'; return;} img.src = files[n++];};
+        img.onload = () => {img.style.display = 'block'; img.nextElementSibling.style.display = 'none'};
+        img.onerror = next; next();
+      })
+    }
+    function refreshPhotos() {document.querySelectorAll('img[data-photo-id]').forEach(img => img.dataset.ready = ''); hydratePhotos()}
+    function exportInventory() {let blob = new Blob([JSON.stringify({...INVENTORY_DOCUMENT, items: INVENTORY}, null, 2)], {type: 'application/json'}); let url = URL.createObjectURL(blob); let a = document.createElement('a'); a.href = url; a.download = 'wardrobe_inventory.json'; a.click(); setTimeout(() => URL.revokeObjectURL(url), 500)}
+    $('exportInventory').onclick = exportInventory;
+    document.getElementById('photoFolderPicker').addEventListener('change', e => loadSelectedPhotos(e.target.files)); document.getElementById('photoFilePicker').addEventListener('change', e => loadSelectedPhotos(e.target.files)); initializeFromJson(); $('storage').textContent = 'JSON files are the source of truth. Export edits made in the builder before refreshing.';
+  </script>
+</body>
+
+</html>
