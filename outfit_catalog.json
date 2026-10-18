@@ -1269,10 +1269,10 @@
       "occasion": "Creative",
       "minF": 48,
       "maxF": 76,
-      "top": null,
-      "bottom": null,
+      "top": "TOP-002",
+      "bottom": "BOTTOM-002",
       "outer": "OUTER-011",
-      "accessory": null,
+      "accessory": "ACC-009",
       "footwear": "SHOE-001",
       "note": "An outfit for Halloween or for costume party."
     }
